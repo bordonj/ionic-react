@@ -53,9 +53,9 @@ const PlanetDetails = ({planet, planetVisible, setPlanetVisible}) => {
                 })}</IonItem>
               </IonList>
             </IonCardContent>
+            <IonButton onClick={()=> setPlanetVisible(!planetVisible)}>Back</IonButton>
           </IonCardHeader>
         </IonCard>
-      <IonButton onClick={()=> setPlanetVisible(!planetVisible)}>Back</IonButton>
       </IonContent>
     </IonPage>
   )
