@@ -18,7 +18,6 @@ function GetPlanets() {
 
   const handleChangingPlanetId = id => {
     setId(id);
-    console.log(id);
     setPlanetVisible(true);
   }
 
@@ -26,7 +25,6 @@ function GetPlanets() {
     if (data) {
       setResults(data.allPlanets.planets);
     }
-    console.log('datum', datum)
     if (datum) {
       setPlanet(datum.planet)
     }
