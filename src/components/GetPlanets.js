@@ -49,7 +49,7 @@ function GetPlanets() {
             {sorted.sort().filter(val => {
               if (searchTerm == "") {
                 return val;
-              } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+              } else if (val.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
                 return val;
               }
             }).map((val, key) => {
