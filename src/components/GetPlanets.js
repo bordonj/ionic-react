@@ -35,6 +35,32 @@ function GetPlanets() {
     return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
   });
 
+  const showList = () => {
+    return (
+      <>
+        {sorted.filter(val => {
+          if (searchTerm == "") {
+            return val;
+          } else if (val.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
+            return val;
+          }
+        }).map((val, key) => {
+          return (
+            <IonItem key={key}>
+              <div 
+                className="planet" 
+                key={val.id}
+                onClick={() => handleChangingPlanetId(val.id)}
+              >
+                <h3>{val.name}</h3>
+              </div>
+            </IonItem>
+          )
+        })}
+      </>
+    )
+  }
+
   if (!planetVisible) {
     return (
       <IonPage>
@@ -44,27 +70,10 @@ function GetPlanets() {
             placeholder="Search..."
           />
           <IonContent
-            style={{height: "100vh"}}>
+            style={{height: "100vh"}}
+            >
             <IonList>
-            {sorted.sort().filter(val => {
-              if (searchTerm == "") {
-                return val;
-              } else if (val.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
-                return val;
-              }
-            }).map((val, key) => {
-              return (
-                <IonItem key={key}>
-                  <div 
-                    className="planet" 
-                    key={val.id}
-                    onClick={() => handleChangingPlanetId(val.id)}
-                  >
-                    <h3>{val.name}</h3>
-                  </div>
-                </IonItem>
-              )
-            })}
+            {showList()}
             </IonList>
           </IonContent>
         </div>
