@@ -3,25 +3,14 @@ import { IonPage, IonContent, IonList, IonItem, IonHeader, IonToolbar, IonTitle,
 
 const PlanetDetails = (props) => {
   const [thisPlanet, setThisPlanet] = useState(props.planet);
-  const [terrains, setTerrains] = useState(props.planet.terrains);
-  const [climates, setClimates] = useState(props.planet.climates)
-  console.log('this planet', thisPlanet)
-  console.log('props', props)
-  console.log('props planet', props.planet)
-  console.log('props planet terrains', props.planet.terrains)
 
   let orbitalPeriod = props.planet.orbitalPeriod ? props.planet.orbitalPeriod: "n/a";
   let population = props.planet.population ? props.planet.population: "n/a";
 
   useEffect(() => {
-    // if (thisPlanet) {
-    //   setThisPlanet(planet);
-    //   setTerrains(planet.terrains);
-    // }
     setThisPlanet(props.planet);
-    setTerrains(props.planet.terrains);
     
-  }, [thisPlanet, terrains]);
+  }, [thisPlanet]);
 
   const showTerrain = () => {
     if (props?.planet?.terrains) {
@@ -55,7 +44,6 @@ const PlanetDetails = (props) => {
     }
   }
   
-  console.log('terrains', terrains)
     return (
       <IonPage>
         <IonHeader>
