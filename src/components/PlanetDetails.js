@@ -1,22 +1,17 @@
 import { useState, useEffect } from 'react';
 import { IonPage, IonContent, IonList, IonItem, IonHeader, IonToolbar, IonTitle, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCard, IonCardContent, IonButton } from "@ionic/react";
 
-const PlanetDetails = (props) => {
-  const [thisPlanet, setThisPlanet] = useState(props.planet);
+const PlanetDetails = ({planet, resetPlanet}) => {
 
-  let orbitalPeriod = props.planet.orbitalPeriod ? props.planet.orbitalPeriod: "n/a";
-  let population = props.planet.population ? props.planet.population: "n/a";
+  let orbitalPeriod = planet.orbitalPeriod ? planet.orbitalPeriod: "n/a";
+  let population = planet.population ? planet.population: "n/a";
 
-  useEffect(() => {
-    setThisPlanet(props.planet);
-    
-  }, [thisPlanet]);
 
   const showTerrain = () => {
-    if (props.planet.terrains) {
+    if (planet.terrains) {
       return (
         <>
-          <h2>Terrain:</h2> {props.planet.terrains.map((terrain, idx) => {
+          <h2>Terrain:</h2> {planet.terrains.map((terrain, idx) => {
             return (
               <IonItem key={idx}> 
                 {terrain}
@@ -29,10 +24,10 @@ const PlanetDetails = (props) => {
   };
 
   const showClimates = () => {
-    if (props.planet.climates) {
+    if (planet.climates) {
       return (
         <>
-          <h2>Climates:</h2> {props.planet.climates.map((climate) => {
+          <h2>Climates:</h2> {planet.climates.map((climate) => {
             return (
               <div key={climate}>
                 <IonItem>{climate}</IonItem>
@@ -49,7 +44,7 @@ const PlanetDetails = (props) => {
         <IonHeader>
           <IonToolbar>
             <IonTitle>
-              {props.planet.name} Details
+              {planet.name} Details
             </IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -60,7 +55,7 @@ const PlanetDetails = (props) => {
                 Here you will find some details about the planet
               </IonCardSubtitle>
               <IonCardTitle>
-                Name: {props.planet.name}
+                Name: {planet.name}
               </IonCardTitle>
               <IonCardContent>
                 <IonList>
@@ -74,8 +69,8 @@ const PlanetDetails = (props) => {
                   {showClimates()}
                 </IonList>
               </IonCardContent>
-              <IonButton onClick={()=> props.setPlanetVisible(!props.planetVisible)}>Back</IonButton>
             </IonCardHeader>
+            <IonButton onClick={resetPlanet}>Back to List</IonButton>
           </IonCard>
         </IonContent>
       </IonPage>
@@ -84,4 +79,4 @@ const PlanetDetails = (props) => {
   
 }
 
-export default PlanetDetails
+export default PlanetDetails;
