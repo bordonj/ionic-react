@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { IonPage, IonSearchbar, IonContent, IonList, IonItem } from "@ionic/react";
+import { IonPage, IonSearchbar, IonContent, IonList, IonItem, IonButton } from "@ionic/react";
 import { LOAD_PLANETS, LOAD_PLANET } from '../GraphQL/Queries';
 import PlanetDetails from './PlanetDetails';
 
@@ -34,6 +34,11 @@ function GetPlanets() {
   sorted.sort((a, b) => {
     return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
   });
+
+  const resetPlanet = () => {
+    setPlanetVisible(false);
+    setPlanet({});
+  }
 
   const showList = () => {
     return (
@@ -80,13 +85,19 @@ function GetPlanets() {
       </IonPage>
     )
   } else {
-    return (
-      <PlanetDetails 
-        planet={planet}
-        planetVisible={planetVisible}
-        setPlanetVisible={setPlanetVisible}
-      />
-    )
+    // only when planet object fully set and has terrains property available, render PlanetDetails
+    if (planet.terrains) {
+      return (
+        <>
+          <PlanetDetails planet={planet} resetPlanet={resetPlanet}/>
+        </>
+      )
+    } else {
+      return (
+        <>
+        </>
+      )
+    }
   }
 
 }
