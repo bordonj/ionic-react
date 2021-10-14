@@ -69,8 +69,8 @@ const PlanetDetails = ({planet, resetPlanet}) => {
                   {showClimates()}
                 </IonList>
               </IonCardContent>
+              <IonButton onClick={resetPlanet}>Back to List</IonButton>
             </IonCardHeader>
-            <IonButton onClick={resetPlanet}>Back to List</IonButton>
           </IonCard>
         </IonContent>
       </IonPage>
