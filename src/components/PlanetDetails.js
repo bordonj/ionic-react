@@ -13,10 +13,10 @@ const PlanetDetails = (props) => {
   }, [thisPlanet]);
 
   const showTerrain = () => {
-    if (props?.planet?.terrains) {
+    if (props.planet.terrains) {
       return (
         <>
-          <h2>Terrain:</h2> {props.planet?.terrains?.map((terrain, idx) => {
+          <h2>Terrain:</h2> {props.planet.terrains.map((terrain, idx) => {
             return (
               <IonItem key={idx}> 
                 {terrain}
@@ -29,7 +29,7 @@ const PlanetDetails = (props) => {
   };
 
   const showClimates = () => {
-    if (props?.planet?.climates) {
+    if (props.planet.climates) {
       return (
         <>
           <h2>Climates:</h2> {props.planet.climates.map((climate) => {
