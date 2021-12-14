@@ -26,7 +26,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import {IconExample} from './pages/IconExample';
-import Search from './pages/Search';
 
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
